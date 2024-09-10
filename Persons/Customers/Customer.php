@@ -31,6 +31,14 @@ class Customer extends Person {
 
         // tomのinterestedがmenuにあれば注文する
         echo $this->name . " was looking at the menu, and ordered ";
+
+        // オーダーを取った従業員を出力
+        foreach ($restaurant->getEmployees() as $employee) {
+            if (get_class($employee) === "Persons\Employees\Cashier") {
+                echo $employee->receiveOrder();
+            }
+        } 
+
         $output = "";
         $mealsToOrder = [];
         $mealsToOrderObj = [];
